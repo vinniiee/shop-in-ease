@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MeShop.</title>
+
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/shop/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <main-content>
+        <!-- Section Template -->
+
+        <template id="section-template">
+          <section>
+            <title class="section-title"></title>
+            <div class="items"></div>
+          </section>
+        </template>
+
+        <!-- Item Template -->
+        <template id="item-template">
+          <div class="item">
+            <div class="img-container"><img src="" alt="Item" /></div>
+            <div class="info">
+              <div class="row">
+                <div class="price"></div>
+                <div class="sized"></div>
+              </div>
+              <div class="colors">
+                Colors:
+                <div class="row color-row">
+                  <div class="circle" style="background-color: #000"></div>
+                  <div class="circle" style="background-color: #4938af"></div>
+                  <div class="circle" style="background-color: #203d3e"></div>
+                </div>
+              </div>
+              <div class="row rating-row">Rating:</div>
+            </div>
+            <button class="addBtn">Add to Cart</button>
+          </div>
+        </template>
+        <div id="products-container"></div>
+        <div class="order">
+          <h3>Your Order</h3>
+          <ul class="order-list">
+            <li class="order-item">
+              <p style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="quantity">1</span>
+              x
+              <span class="name">Shirt</span>
+              </p>
+              <span class="price">Rs. 1200/-</span>
+            </li>
+            
+          </ul>
+          <div class="total">
+            <span>Total</span>
+            <span class="total-price"> Rs. 1200/-</span>
+          </div>
+          <button class="checkout-btn">Checkout</button>
+        </div>
+      </main-content>
+    </main>
+    <script src="./script.js"></script>
+    <script src="/components/navbar/index.js"></script>
+    <script src="/utils/protected.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>
+
+
+<!-- Key ID : rzp_test_8wNmvfKJWMszhN
+Key Secret : JvrVxn4QBBqr9xtfhfzoImsu
+ -->
