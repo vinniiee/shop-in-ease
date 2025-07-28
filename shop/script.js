@@ -258,7 +258,7 @@ function renderProducts(title = "Products", products = []) {
       // itemClone.querySelector(".addBtn").removeEventListener("click", arguments.callee);
       itemClone.querySelector(".addBtn").addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "/cart";
+        window.location.href = "../cart/index.html";
       });
       itemClone.querySelector(".addBtn").classList.remove("addBtn");
     }
@@ -278,7 +278,7 @@ function renderProducts(title = "Products", products = []) {
       // e.target.removeEventListener("click", arguments.callee);
       e.target.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "/cart";
+        window.location.href = "../cart/index.html";
       });
 
       const price = parseFloat(
@@ -302,28 +302,3 @@ function renderProducts(title = "Products", products = []) {
     });
   });
 }
-
-// document.querySelectorAll(".addBtn").forEach((btn) => {
-//   btn.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     const productElement = e.target.closest(".item");
-//     const image = productElement.querySelector("img").src;
-//     e.target.innerHTML = `<button class="to-cart">Go to Cart</button>`;
-
-//     const price = parseFloat(
-//       productElement.querySelector(".price").textContent.replace(/[^\d.]/g, "")
-//     );
-//     const rating = parseFloat(
-//       productElement
-//         .querySelector(".rating-row")
-//         .textContent.replace(/[^\d.]/g, "")
-//     );
-//     let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
-//     const exists = cart.find((item) => item.image === image);
-//     if (!exists) {
-//       cart.push({ image, price, rating });
-//       localStorage.setItem("cart", JSON.stringify(cart));
-//     }
-//   });
-// });

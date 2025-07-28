@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="nav-items">
                       <a href="/">Home</a>
-                      <a href="/login">Login</a>
-                      <a href="/signup">Signup</a>
+                      <a href="../../login/index.html">Login</a>
+                      <a href="../../signup/index.html">Signup</a>
                     </div>`;
   } else {
     nav.innerHTML = `<div class="brand">
@@ -16,19 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="nav-items">
                       <a href="/">Home</a>
-                      <a href="/signout">Signout</a>
-                      <a href="/cart">My Cart</a>
+                      <a href="../../profile/index.html">Profile</a>
+                      <a href="../../signout/index.html">Signout</a>
+                      <a href="../../cart/index.html">My Cart</a>
                     </div>`;
   }
 
   document.body.insertBefore(nav, document.body.firstChild);
 
-  const signoutBtn = document.querySelector('.nav-items a[href="/signout"]');
+  const signoutBtn = document.querySelector('.nav-items a[href="signout/"]');
   if (signoutBtn) {
     signoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
       localStorage.removeItem("currentUser");
-      window.location.href = "/login";
+      window.location.href = "../../login/index.html";
     });
   }
 });

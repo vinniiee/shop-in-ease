@@ -27,13 +27,13 @@ function submitHandler(event) {
         } else {
           error.textContent = "";
           localStorage.setItem("currentUser", JSON.stringify(user));
-          window.location.href = "/shop/index.html";
+          window.location.href = "../shop/index.html";
           return;
         }
       }
     });
     if (!currentUser) {
-      error.innerHTML = `<span>User not found. Please <a href="/signup" style="color:blue">Sign Up</a>.</span>`;
+      error.innerHTML = `<span>User not found. Please <a href="signup/" style="color:blue">Sign Up</a>.</span>`;
     }
   }
 }

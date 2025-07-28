@@ -1,25 +1,89 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Profile</title>
     <meta name="description" content="" />
+    <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <style>
+      .edit-form {
+        display: none;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
+    <main>
+      <div class="profile-container">
+        <h1>Profile</h1>
+        <div class="profile-info">
+          <p><strong>Name:</strong> <span id="user-name"></span></p>
+          <p><strong>Email:</strong> <span id="user-email"></span></p>
+        </div>
+        <button id="edit-profile-btn">Edit Profile</button>
 
-    <script src="" async defer></script>
+        <form id="edit-form" class="edit-form">
+          <input type="text" name="fname" id="fname-input" placeholder="First Name" required />
+          <input type="text" name="lname" id="lname-input" placeholder="Last Name" required />
+          <input type="email" name="email" id="email-input" placeholder="Email" required />
+          <button type="submit">Save</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      const userNameSpan = document.getElementById("user-name");
+      const userEmailSpan = document.getElementById("user-email");
+      const editBtn = document.getElementById("edit-profile-btn");
+      const editForm = document.getElementById("edit-form");
+
+      const fnameInput = document.getElementById("fname-input");
+      const lnameInput = document.getElementById("lname-input");
+      const emailInput = document.getElementById("email-input");
+
+      // Load user from localStorage
+      let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+      if (currentUser) {
+        userNameSpan.textContent = `${currentUser.fname} ${currentUser.lname}`;
+        userEmailSpan.textContent = currentUser.email;
+
+        fnameInput.value = currentUser.fname || "";
+        lnameInput.value = currentUser.lname || "";
+        emailInput.value = currentUser.email || "";
+      }
+
+      // Show/Hide Edit Form
+      editBtn.addEventListener("click", () => {
+        editForm.style.display = editForm.style.display === "none" ? "block" : "none";
+      });
+
+      // Handle Submit
+      editForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const updatedFname = fnameInput.value.trim();
+        const updatedLname = lnameInput.value.trim();
+        const updatedEmail = emailInput.value.trim();
+
+        if (updatedFname && updatedLname && updatedEmail) {
+          // Update currentUser object
+          currentUser.fname = updatedFname;
+          currentUser.lname = updatedLname;
+          currentUser.email = updatedEmail;
+
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+          // Update UI
+          userNameSpan.textContent = `${updatedFname} ${updatedLname}`;
+          userEmailSpan.textContent = updatedEmail;
+
+          alert("Profile updated successfully!");
+          editForm.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>

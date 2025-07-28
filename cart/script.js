@@ -128,7 +128,7 @@ checkoutBtn.addEventListener("click", async (e) => {
       "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
     handler: () => {
       localStorage.removeItem("cart");
-      window.location.href = "/shop";
+      window.location.href = "../shop/index.html";
     },
   };
 
