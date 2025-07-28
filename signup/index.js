@@ -45,7 +45,7 @@ function submitHandler(event) {
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("currentUser", JSON.stringify(newUser));
-      window.location.href = "../shop/index.html";
+      window.location.href = "./shop/index.html";
     }
   }
 }

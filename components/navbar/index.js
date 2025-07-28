@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   if (currentUser == null) {
     nav.innerHTML = `<div class="brand">
-                      <a href="/">ShopInEase</a>
+                      <a href="../../">ShopInEase</a>
                     </div>
                     <div class="nav-items">
                       <a href="/">Home</a>
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>`;
   } else {
     nav.innerHTML = `<div class="brand">
-                      <a href="/">ShopInEase</a>
+                      <a href="../../">ShopInEase</a>
                     </div>
                     <div class="nav-items">
                       <a href="/">Home</a>
