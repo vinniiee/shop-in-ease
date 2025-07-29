@@ -23,6 +23,7 @@ function renderProducts(title = "Products", products = []) {
     noProductsMessage.textContent = "No products added to the cart.";
     productsContainer.innerHTML = "";
     productsContainer.append(noProductsMessage);
+    renderReceipt();
     return;
   }
   console.log(products);
@@ -70,13 +71,33 @@ document.querySelectorAll(".rmvBtn").forEach((btn) => {
     cart = cart.filter((item) => item.image !== img);
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    renderReceipt();
     renderProducts("My Cart", cart);
+    renderReceipt();
   });
 });
 
 function renderReceipt() {
   const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+  if (cart.length === 0) {
+    const order = document.querySelector(".order");
+    order.innerHTML = `<h3>Your Order</h3>
+          <ul class="order-list">
+            <li class="order-item">
+              <p style="display: flex; align-items: center; justify-content: space-between;">
+                <span class="quantity"></span>
+              
+              <span class="name"></span>
+              </p>
+              <span class="price"></span>
+            </li>
+            
+          </ul>
+          <div class="total">
+            <span>Total</span>
+            <span class="total-price"> Rs. 0.0/-</span>
+          </div>
+          <button class="checkout-btn" disabled>Checkout</button>`
+  }
   const orderList = document.querySelector(".order-list");
   orderList.innerHTML = "";
   let total = 0;
