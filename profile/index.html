@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Profile</title>
     <meta name="description" content="" />
+    <link rel="stylesheet" href="/styles.css" />
+
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
@@ -25,13 +27,32 @@
         <button id="edit-profile-btn">Edit Profile</button>
 
         <form id="edit-form" class="edit-form">
-          <input type="text" name="fname" id="fname-input" placeholder="First Name" required />
-          <input type="text" name="lname" id="lname-input" placeholder="Last Name" required />
-          <input type="email" name="email" id="email-input" placeholder="Email" required />
+          <input
+            type="text"
+            name="fname"
+            id="fname-input"
+            placeholder="First Name"
+            required
+          />
+          <input
+            type="text"
+            name="lname"
+            id="lname-input"
+            placeholder="Last Name"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            id="email-input"
+            placeholder="Email"
+            required
+          />
           <button type="submit">Save</button>
         </form>
       </div>
     </main>
+    <script src="/components/navbar/index.js"></script>
 
     <script>
       const userNameSpan = document.getElementById("user-name");
@@ -57,7 +78,8 @@
 
       // Show/Hide Edit Form
       editBtn.addEventListener("click", () => {
-        editForm.style.display = editForm.style.display === "none" ? "block" : "none";
+        editForm.style.display =
+          editForm.style.display === "none" ? "block" : "none";
       });
 
       // Handle Submit
@@ -69,14 +91,12 @@
         const updatedEmail = emailInput.value.trim();
 
         if (updatedFname && updatedLname && updatedEmail) {
-          // Update currentUser object
           currentUser.fname = updatedFname;
           currentUser.lname = updatedLname;
           currentUser.email = updatedEmail;
 
           localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
-          // Update UI
           userNameSpan.textContent = `${updatedFname} ${updatedLname}`;
           userEmailSpan.textContent = updatedEmail;
 

@@ -1,12 +1,12 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 20px;
-  background-color: #f5f5f5;
+
+main{
+    width: 100%;
 }
 
+
 .profile-container {
-  max-width: 500px;
+  width: 100%;  
+  max-width: 900px;
   margin: auto;
   background-color: #fff;
   padding: 30px;
@@ -28,12 +28,10 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #005fa3;
-}
 
 .edit-form {
   display: none;
+  width: 100%;
   margin-top: 20px;
 }
 
@@ -48,9 +46,6 @@ button:hover {
 }
 
 .edit-form button {
-  background-color: #28a745;
+  background-color: black;
 }
 
-.edit-form button:hover {
-  background-color: #1e7e34;
-}

@@ -2,6 +2,12 @@ String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 };
 
+const basePath =
+  window.location.hostname === "127.0.0.1" ||
+  window.location.hostname === "localhost"
+    ? ""
+    : "/shop-in-ease";
+
 // const produtc = {
 //   id: 1,
 //   title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -258,7 +264,7 @@ function renderProducts(title = "Products", products = []) {
       // itemClone.querySelector(".addBtn").removeEventListener("click", arguments.callee);
       itemClone.querySelector(".addBtn").addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "../cart/index.html";
+        window.location.href = basePath + "/cart/index.html";
       });
       itemClone.querySelector(".addBtn").classList.remove("addBtn");
     }
@@ -278,7 +284,7 @@ function renderProducts(title = "Products", products = []) {
       // e.target.removeEventListener("click", arguments.callee);
       e.target.addEventListener("click", (e) => {
         e.preventDefault();
-        window.location.href = "../cart/index.html";
+        window.location.href = basePath + "/cart/index.html";
       });
 
       const price = parseFloat(

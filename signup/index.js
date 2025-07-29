@@ -30,12 +30,13 @@ function submitHandler(event) {
       return;
     } else {
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      users.forEach((user) => {
-        if (user.email === email) {
-          error.textContent = "Email already exists.";
-          return;
-        }
-      });
+      const emailExists = users.some((user) => user.email === email);
+
+      if (emailExists) {
+        error.textContent = "Email already exists.";
+        return;
+      }
+
       const newUser = {
         fname: fname,
         lname: lname,
@@ -45,7 +46,13 @@ function submitHandler(event) {
       users.push(newUser);
       localStorage.setItem("users", JSON.stringify(users));
       localStorage.setItem("currentUser", JSON.stringify(newUser));
-      window.location.href = "./shop/index.html";
+
+      const basePath =
+        window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+          ? ""
+          : "/shop-in-ease";
+
+      window.location.href = `${basePath}/shop/index.html`;
     }
   }
 }

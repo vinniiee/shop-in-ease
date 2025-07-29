@@ -2,6 +2,11 @@ String.prototype.capitalize = function () {
   return this.charAt(0).toUpperCase() + this.slice(1).toLowerCase();
 };
 
+const basePath =
+    window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+      ? ""
+      : "/shop-in-ease";
+
 renderProducts("My Cart", JSON.parse(localStorage.getItem("cart") || "[]"));
 renderReceipt();
 // Event listener for category buttons
@@ -99,7 +104,7 @@ const checkoutBtn = document.querySelector(".checkout-btn");
 
 if (JSON.parse(localStorage.getItem("cart") || "[]").length === 0) {
   checkoutBtn.disabled = true;
-  checkoutBtn.style.backgroundColor = "#ccc";
+  checkoutBtn.style.backgroundColor = "#ccc";   
   checkoutBtn.style.cursor = "not-allowed";
 }
 
@@ -128,7 +133,7 @@ checkoutBtn.addEventListener("click", async (e) => {
       "https://www.mintformations.co.uk/blog/wp-content/uploads/2020/05/shutterstock_583717939.jpg",
     handler: () => {
       localStorage.removeItem("cart");
-      window.location.href = "../shop/index.html";
+      window.location.href = basePath+"/shop/index.html";
     },
   };
 

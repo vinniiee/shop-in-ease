@@ -1,3 +1,8 @@
+  const basePath =
+    window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+      ? ""
+      : "/shop-in-ease";
+
 const form = document.querySelector("form");
 const error = document.querySelector(".error");
 
@@ -27,13 +32,13 @@ function submitHandler(event) {
         } else {
           error.textContent = "";
           localStorage.setItem("currentUser", JSON.stringify(user));
-          window.location.href = "../shop/index.html";
+          window.location.href = basePath+"/shop/index.html";
           return;
         }
       }
     });
     if (!currentUser) {
-      error.innerHTML = `<span>User not found. Please <a href="signup/" style="color:blue">Sign Up</a>.</span>`;
+      error.innerHTML = `<span>User not found. Please <a href="${basePath}/signup/index.html" style="color:blue">Sign Up</a>.</span>`;
     }
   }
 }
