@@ -32,7 +32,10 @@ nav .brand {
 nav .nav-items a {
   margin: 0 1rem;
 }
-
+a {
+  color: white;
+  text-decoration: none;
+}
 
 .profile-container {
   width: 100%;
